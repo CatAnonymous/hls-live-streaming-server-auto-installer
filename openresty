@@ -1,139 +1,120 @@
-#!/bin/sh
-#
-# openresty     Startup script for openresty/nginx
-#
-# chkconfig: - 85 15
-# processname: nginx
-# config: /usr/local/openresty/nginx/conf/nginx.conf
-# config: /etc/sysconfig/openresty
-# pidfile: /var/run/openresty.pid
-# description: nginx(openresty) is a HTTP and reverse proxy server
-#
+#! /bin/sh
+# chkconfig: 2345 55 25
+# Description: Startup script for nginx webserver on Debian. Place in /etc/init.d and
+# run 'update-rc.d -f nginx defaults', or use the appropriate command on your
+# distro. For CentOS/Redhat run: 'chkconfig --add nginx'
+
 ### BEGIN INIT INFO
-# Provides: nginx
-# Required-Start: $local_fs $remote_fs $network
-# Required-Stop: $local_fs $remote_fs $network
-# Default-Start: 2 3 4 5
-# Default-Stop: 0 1 6
-# Short-Description: start and stop nginx/openresty
+# Provides:          nginx
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the nginx web server
+# Description:       starts nginx using start-stop-daemon
 ### END INIT INFO
-  
-# Source function library.
-. /etc/rc.d/init.d/functions
-  
-if [ -f /etc/sysconfig/openresty ]; then
-    . /etc/sysconfig/openresty
-fi
-  
-prog=nginx
-nginx=${NGINX-/usr/local/openresty/nginx/sbin/nginx}
-conffile=${CONFFILE-/usr/local/openresty/nginx/conf/nginx.conf}
-lockfile=${LOCKFILE-/var/lock/subsys/openresty}
-pidfile=${PIDFILE-/var/run/openresty.pid}
-SLEEPMSEC=100000
-RETVAL=0
-  
-start() {
-    echo -n $"Starting $prog: "
-  
-    daemon --pidfile=${pidfile} ${nginx} -c ${conffile}
-    RETVAL=$?
-    echo
-    [ $RETVAL = 0 ] && touch ${lockfile}
-    return $RETVAL
-}
-  
-stop() {
-    echo -n $"Stopping $prog: "
-    killproc -p ${pidfile} ${prog}
-    RETVAL=$?
-    echo
-    [ $RETVAL = 0 ] && rm -f ${lockfile} ${pidfile}
-}
-  
-reload() {
-    echo -n $"Reloading $prog: "
-    killproc -p ${pidfile} ${prog} -HUP
-    RETVAL=$?
-    echo
-}
-  
-upgrade() {
-    oldbinpidfile=${pidfile}.oldbin
-  
-    configtest -q || return 6
-    echo -n $"Staring new master $prog: "
-    killproc -p ${pidfile} ${prog} -USR2
-    RETVAL=$?
-    echo
-    /bin/usleep $SLEEPMSEC
-    if [ -f ${oldbinpidfile} -a -f ${pidfile} ]; then
-        echo -n $"Graceful shutdown of old $prog: "
-        killproc -p ${oldbinpidfile} ${prog} -QUIT
-        RETVAL=$?
-        echo
-    else
-        echo $"Upgrade failed!"
-        return 1
-    fi
-}
-  
-configtest() {
-    if [ "$#" -ne 0 ] ; then
-        case "$1" in
-            -q)
-                FLAG=$1
-                ;;
-            *)
-                ;;
-        esac
-        shift
-    fi
-    ${nginx} -t -c ${conffile} $FLAG
-    RETVAL=$?
-    return $RETVAL
-}
-  
-rh_status() {
-    status -p ${pidfile} ${nginx}
-}
-  
-# See how we were called.
+
+# Author:   licess
+# website:  http://www.phpsong.com
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NAME=nginx
+NGINX_BIN=/usr/local/openresty/nginx/sbin/$NAME
+CONFIGFILE=/usr/local/openresty/nginx/conf/$NAME.conf
+PIDFILE=/usr/local/openresty/nginx/logs/$NAME.pid
+
 case "$1" in
     start)
-        rh_status >/dev/null 2>&1 && exit 0
-        start
-        ;;
-    stop)
-        stop
-        ;;
-    status)
-        rh_status
-        RETVAL=$?
-        ;;
-    restart)
-        configtest -q || exit $RETVAL
-        stop
-        start
-        ;;
-    upgrade)
-        upgrade
-        ;;
-    condrestart|try-restart)
-        if rh_status >/dev/null 2>&1; then
-            stop
-            start
+        echo -n "Starting $NAME... "
+
+        if netstat -tnpl | grep -q nginx;then
+            echo "$NAME (pid `pidof $NAME`) already running."
+            exit 1
+        fi
+
+        $NGINX_BIN -c $CONFIGFILE
+
+        if [ "$?" != 0 ] ; then
+            echo " failed"
+            exit 1
+        else
+            echo " done"
         fi
         ;;
-    force-reload|reload)
-        reload
+
+    stop)
+        echo -n "Stoping $NAME... "
+
+        if ! netstat -tnpl | grep -q nginx; then
+            echo "$NAME is not running."
+            exit 1
+        fi
+
+        $NGINX_BIN -s stop
+
+        if [ "$?" != 0 ] ; then
+            echo " failed. Use force-quit"
+            exit 1
+        else
+            echo " done"
+        fi
         ;;
+
+    status)
+        if netstat -tnpl | grep -q nginx; then
+            PID=`pidof nginx`
+            echo "$NAME (pid $PID) is running..."
+        else
+            echo "$NAME is stopped"
+            exit 0
+        fi
+        ;;
+
+    force-quit)
+        echo -n "Terminating $NAME... "
+
+        if ! netstat -tnpl | grep -q nginx; then
+            echo "$NAME is not running."
+            exit 1
+        fi
+
+        kill `pidof $NAME`
+
+        if [ "$?" != 0 ] ; then
+            echo " failed"
+            exit 1
+        else
+            echo " done"
+        fi
+        ;;
+
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+
+    reload)
+        echo -n "Reload service $NAME... "
+
+        if netstat -tnpl | grep -q nginx; then
+            $NGINX_BIN -s reload
+            echo " done"
+        else
+            echo "$NAME is not running, can't reload."
+            exit 1
+        fi
+        ;;
+
     configtest)
-        configtest
+        echo -n "Test $NAME configure files... "
+
+        $NGINX_BIN -t
         ;;
+
     *)
-        echo $"Usage: $prog {start|stop|restart|condrestart|try-restart|force-reload|upgrade|reload|status|help|configtest}"
-        RETVAL=2
+        echo "Usage: $0 {start|stop|force-quit|restart|reload|status|configtest}"
+        exit 1
+        ;;
+
 esac
-  
-exit $RETVAL
