@@ -55,6 +55,10 @@ echo "Creating file /usr/local/nginx/html/api.php"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/api.php -O /usr/local/nginx/html/api.php > /dev/null 2>&1
 
 echo ""
+echo "Creating file /usr/local/nginx/html/hls.php"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/hls.php -O /usr/local/nginx/html/hls.php > /dev/null 2>&1
+
+echo ""
 echo "Creating config file /usr/local/nginx/conf/nginx.conf"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx.conf -O /usr/local/nginx/conf/nginx.conf > /dev/null 2>&1
 
