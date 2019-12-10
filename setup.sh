@@ -57,6 +57,7 @@ echo ""
 echo "Creating config file /usr/local/nginx/conf/nginx.conf"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx.conf -O /usr/local/nginx/conf/nginx.conf > /dev/null 2>&1
 
+mkdir /usr/local/nginx/conf.d
 mkdir /tmp/hls
 mkdir /tmp/hls2
 
