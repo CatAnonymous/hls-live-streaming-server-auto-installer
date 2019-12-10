@@ -13,7 +13,7 @@ clear
 mkdir /tmp/nginx-rtmp-build
 cd /tmp/nginx-rtmp-build
 echo "Ban dang su dung script tu dong cai dat Nginx RTMP cho Debian va Ubuntu duoc viet boi Khai Phan"
-echo "================================================="
+echo "================================================"
 echo "" 
 echo "Dang cap nhat tai nguyen..."
 apt-get update > /dev/null 2>&1
@@ -85,8 +85,11 @@ echo "Dang cai dat FFMPEG..."
 echo ""
 apt-get -y install yasm libx264-dev x264 libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libxext-dev libxfixes-dev ffmpeg
 
-service nginx start
-service php7.3-fpm start
+#service nginx start
+#service php7.3-fpm start
+#service php7.3-fpm status
+bash /root/start.sh
+
 rm -rf /tmp/nginx-rtmp-build
 echo ""
 echo ""
