@@ -10,7 +10,8 @@
 #
 
 clear
-cd /tmp
+mkdir /tmp/nginx-rtmp-build
+cd /tmp/nginx-rtmp-build
 echo "Ban dang su dung script tu dong cai dat Nginx RTMP cho Debian va Ubuntu duoc viet boi Khai Phan"
 echo "================================================="
 echo "" 
@@ -78,6 +79,7 @@ apt-get -y install yasm libx264-dev x264 libmp3lame-dev libtheora-dev libvorbis-
 
 service nginx start
 service php7.3-fpm start
+rm -rf /tmp/nginx-rtmp-build
 echo ""
 echo ""
 echo "Da hoan thanh cai dat RTMP Server"
