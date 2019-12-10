@@ -28,35 +28,39 @@ wget http://nginx.org/download/nginx-1.17.6.tar.gz && tar -zxvf nginx-1.17.6.tar
 wget https://github.com/winshining/nginx-http-flv-module/archive/master.zip && unzip master.zip
 cd nginx-1.17.6
 
-./configure --with-http_ssl_module --add-module=../nginx-http-flv-module-master && make && make install
+./configure --with-http_ssl_module --with-http_stub_status_module --add-module=../nginx-http-flv-module-master && make && make install
 
 echo ""
-echo "Creating config file /etc/init.d/nginx"
+echo "Creating file /etc/init.d/nginx"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-init.txt -O /etc/init.d/nginx && chmod +x /etc/init.d/nginx > /dev/null 2>&1
 
 echo ""
-echo "Creating config file /usr/local/nginx/html/.htpasswd"
+echo "Creating file /usr/local/nginx/html/.htpasswd"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/.htpasswd -O /usr/local/nginx/html/.htpasswd > /dev/null 2>&1
 
 echo ""
-echo "Creating config file /usr/local/nginx/html/crossdomain.xml"
+echo "Creating file /usr/local/nginx/html/crossdomain.xml"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/crossdomain.xml -O /usr/local/nginx/html/crossdomain.xml > /dev/null 2>&1
 
 echo ""
-echo "Creating config file /usr/local/nginx/html/stat.xsl"
+echo "Creating file /usr/local/nginx/html/stat.xsl"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/stat.xsl -O /usr/local/nginx/html/stat.xsl > /dev/null 2>&1
 
 echo ""
-echo "Creating config file /usr/local/nginx/html/info.php"
+echo "Creating file /usr/local/nginx/html/info.php"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/info.php -O /usr/local/nginx/html/info.php > /dev/null 2>&1
 
 echo ""
-echo "Creating config file /usr/local/nginx/html/api.php"
+echo "Creating file /usr/local/nginx/html/api.php"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/api.php -O /usr/local/nginx/html/api.php > /dev/null 2>&1
 
 echo ""
 echo "Creating config file /usr/local/nginx/conf/nginx.conf"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx.conf -O /usr/local/nginx/conf/nginx.conf > /dev/null 2>&1
+
+echo ""
+echo "Creating file /root/start.sh"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O /root/start.sh > /dev/null 2>&1
 
 mkdir /usr/local/nginx/conf.d
 mkdir /tmp/hls
