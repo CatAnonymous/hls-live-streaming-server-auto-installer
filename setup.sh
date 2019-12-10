@@ -60,7 +60,7 @@ wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto
 
 echo ""
 echo "Creating file /root/start.sh"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O /root/start.sh && chmod +x start.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O /root/start.sh && chmod +x /root/start.sh > /dev/null 2>&1
 
 mkdir /usr/local/nginx/conf.d
 mkdir /tmp/hls
