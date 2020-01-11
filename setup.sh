@@ -22,7 +22,7 @@ echo ""
 echo "Bat dau cai dat NGINX RTMP Server"
 echo ""
 
-apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev zlib1g zlib1g-dev libssl-dev unzip 
+apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev zlib1g zlib1g-dev libssl-dev unzip gcc
 
 wget http://nginx.org/download/nginx-1.17.6.tar.gz && tar -zxvf nginx-1.17.6.tar.gz
 wget https://github.com/winshining/nginx-http-flv-module/archive/master.zip && unzip master.zip
