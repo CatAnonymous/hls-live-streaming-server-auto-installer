@@ -28,11 +28,26 @@ wget http://nginx.org/download/nginx-1.17.6.tar.gz && tar -zxvf nginx-1.17.6.tar
 wget https://github.com/winshining/nginx-http-flv-module/archive/master.zip && unzip master.zip
 cd nginx-1.17.6
 
-./configure --with-http_ssl_module --with-http_stub_status_module --add-module=../nginx-http-flv-module-master && make && make install
+./configure --with-http_ssl_module --with-http_stub_status_module --add-module=../nginx-http-flv-module-master --user=www-data --group=www-data --build=KhaiPhan && make && make install
+
+// Install PHP
+echo ""
+echo "Dang cai dat PHP..."
+echo ""
+apt-get -y install software-properties-common
+apt-get update
+apt-get -y install php7.3-fpm php7.3-curl
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini
+
+// Install FFMPEG
+echo ""
+echo "Dang cai dat FFMPEG..."
+echo ""
+apt-get -y install yasm libx264-dev x264 libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libxext-dev libxfixes-dev ffmpeg
 
 echo ""
 echo "Creating file /etc/init.d/nginx"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-init.txt -O /etc/init.d/nginx && chmod +x /etc/init.d/nginx > /dev/null 2>&1
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-init.txt -O /etc/init.d/nginx > /dev/null 2>&1 && chmod +x /etc/init.d/nginx
 
 echo ""
 echo "Creating file /usr/local/nginx/html/.htpasswd"
@@ -64,26 +79,11 @@ wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto
 
 echo ""
 echo "Creating file /root/start.sh"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O /root/start.sh && chmod +x /root/start.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O /root/start.sh > /dev/null 2>&1 && chmod +x /root/start.sh
 
 mkdir /usr/local/nginx/conf.d
 mkdir /tmp/hls
 mkdir /tmp/hls2
-
-// Install PHP
-echo ""
-echo "Dang cai dat PHP..."
-echo ""
-apt-get -y install software-properties-common
-apt-get update
-apt-get -y install php7.3-fpm php7.3-curl
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini
-
-// Install FFMPEG
-echo ""
-echo "Dang cai dat FFMPEG..."
-echo ""
-apt-get -y install yasm libx264-dev x264 libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libxext-dev libxfixes-dev ffmpeg
 
 #service nginx start
 #service php7.3-fpm start
