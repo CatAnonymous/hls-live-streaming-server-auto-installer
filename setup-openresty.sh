@@ -28,7 +28,7 @@ wget https://openresty.org/download/openresty-1.15.8.2.tar.gz && tar -zxvf openr
 wget https://github.com/winshining/nginx-http-flv-module/archive/master.zip && unzip master.zip
 cd openresty-1.15.8.2
 
-./configure --with-http_ssl_module --with-http_stub_status_module --add-module=../nginx-http-flv-module-master --user=www-data --group=www-data --build=KhaiPhan && make && make install
+./configure --with-http_ssl_module --with-http_stub_status_module --add-module=../nginx-http-flv-module-master --user=www-data --group=www-data --build=KhaiPhan && make -j8 && make install
 
 // Install PHP
 echo ""
