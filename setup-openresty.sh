@@ -47,41 +47,41 @@ apt-get -y install yasm libx264-dev x264 libmp3lame-dev libtheora-dev libvorbis-
 
 echo ""
 echo "Creating file /etc/init.d/openresty"
-wget https://raw.githubusercontent.com/openresty/openresty-packaging/master/deb/openresty/debian/openresty.init -O /etc/init.d/nginx > /dev/null 2>&1 && chmod +x /etc/init.d/openresty
+wget https://raw.githubusercontent.com/openresty/openresty-packaging/master/deb/openresty/debian/openresty.init -O /etc/init.d/openresty > /dev/null 2>&1 && chmod +x /etc/init.d/openresty
 
 echo ""
-echo "Creating file /usr/local/openresty/html/.htpasswd"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/.htpasswd -O /usr/local/openresty/html/.htpasswd > /dev/null 2>&1
+echo "Creating file /usr/local/openresty/nginx/html/.htpasswd"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/.htpasswd -O /usr/local/openresty/nginx/html/.htpasswd > /dev/null 2>&1
 
 echo ""
-echo "Creating file /usr/local/openresty/html/crossdomain.xml"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/crossdomain.xml -O /usr/local/openresty/html/crossdomain.xml > /dev/null 2>&1
+echo "Creating file /usr/local/openresty/nginx/html/crossdomain.xml"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/crossdomain.xml -O /usr/local/openresty/nginx/html/crossdomain.xml > /dev/null 2>&1
 
 echo ""
-echo "Creating file /usr/local/openresty/html/stat.xsl"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/stat.xsl -O /usr/local/openresty/html/stat.xsl > /dev/null 2>&1
+echo "Creating file /usr/local/openresty/nginx/html/stat.xsl"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/stat.xsl -O /usr/local/openresty/nginx/html/stat.xsl > /dev/null 2>&1
 
 echo ""
-echo "Creating file /usr/local/openresty/html/info.php"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/info.php -O /usr/local/openresty/html/info.php > /dev/null 2>&1
+echo "Creating file /usr/local/openresty/nginx/html/info.php"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/info.php -O /usr/local/openresty/nginx/html/info.php > /dev/null 2>&1
 
 echo ""
-echo "Creating file /usr/local/openresty/html/api.php"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/api.php -O /usr/local/openresty/html/api.php > /dev/null 2>&1
+echo "Creating file /usr/local/openresty/nginx/html/api.php"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/api.php -O /usr/local/openresty/nginx/html/api.php > /dev/null 2>&1
 
 echo ""
-echo "Creating file /usr/local/openresty/html/hls.php"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/hls.php -O /usr/local/openresty/html/hls.php > /dev/null 2>&1
+echo "Creating file /usr/local/openresty/nginx/html/hls.php"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/hls.php -O /usr/local/openresty/nginx/html/hls.php > /dev/null 2>&1
 
 echo ""
-echo "Creating config file /usr/local/openresty/conf/nginx.conf"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O /usr/local/openresty/conf/nginx.conf > /dev/null 2>&1
+echo "Creating config file /usr/local/openresty/nginx/conf/nginx.conf"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O /usr/local/openresty/nginx/conf/nginx.conf > /dev/null 2>&1
 
 echo ""
 echo "Creating file /root/start.sh"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start-openresty.sh -O /root/start.sh > /dev/null 2>&1 && chmod +x /root/start.sh
 
-mkdir /usr/local/openresty/conf.d
+mkdir /usr/local/openresty/nginx/conf.d
 mkdir /tmp/hls
 mkdir /tmp/hls2
 
