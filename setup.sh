@@ -74,8 +74,8 @@ echo "Creating file /usr/local/nginx/html/hls.php"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/hls.php -O /usr/local/nginx/html/hls.php > /dev/null 2>&1
 
 echo ""
-echo "Creating config file /usr/local/nginx/conf/nginx.conf"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx.conf -O /usr/local/nginx/conf/nginx.conf > /dev/null 2>&1
+echo "Creating config file /usr/local/nginx/conf.d/http-proxy.conf"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/http-proxy.conf -O /usr/local/nginx/conf.d/http-proxy.conf > /dev/null 2>&1
 
 echo ""
 echo "Creating file /root/start.sh"

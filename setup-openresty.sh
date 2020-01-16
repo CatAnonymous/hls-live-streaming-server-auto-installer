@@ -78,6 +78,10 @@ echo "Creating config file /usr/local/openresty/nginx/conf/nginx.conf"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O /usr/local/openresty/nginx/conf/nginx.conf > /dev/null 2>&1
 
 echo ""
+echo "Creating config file /usr/local/openresty/nginx/conf.d/http-proxy.conf"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/http-proxy.conf -O /usr/local/openresty/nginx/conf.d/http-proxy.conf > /dev/null 2>&1
+
+echo ""
 echo "Creating file /root/start.sh"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start-openresty.sh -O /root/start.sh > /dev/null 2>&1 && chmod +x /root/start.sh
 
