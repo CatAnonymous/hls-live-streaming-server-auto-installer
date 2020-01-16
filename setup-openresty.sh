@@ -22,7 +22,7 @@ echo ""
 echo "Bat dau cai dat OpenResty NGINX RTMP Server"
 echo ""
 
-apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev zlib1g zlib1g-dev libssl-dev unzip gcc
+apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev zlib1g zlib1g-dev libssl-dev unzip gcc lsof
 
 wget https://openresty.org/download/openresty-1.15.8.2.tar.gz && tar -zxvf openresty-1.15.8.2.tar.gz
 wget https://github.com/winshining/nginx-http-flv-module/archive/master.zip && unzip master.zip
