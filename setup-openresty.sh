@@ -83,7 +83,7 @@ wget "https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-aut
 
 echo ""
 echo "Dang tao file /root/start.sh"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start-openresty.sh -O /root/start.sh > /dev/null 2>&1 && chmod +x /root/start.sh
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O /root/start.sh > /dev/null 2>&1 && chmod +x /root/start.sh
 
 mkdir /usr/local/openresty/nginx/conf.d
 mkdir /tmp/hls
@@ -91,6 +91,7 @@ mkdir /tmp/hls2
 
 ln -s /etc/init.d/openresty /etc/init.d/nginx
 update-rc.d openresty defaults
+update-rc.d php7.3-fpm defaults
 #service openresty start
 #service php7.3-fpm start
 #service php7.3-fpm status
