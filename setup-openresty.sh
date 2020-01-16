@@ -46,6 +46,12 @@ echo ""
 apt-get -y install yasm libx264-dev x264 libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libxext-dev libxfixes-dev ffmpeg
 
 echo ""
+echo "Dang tao cac thu muc can thiet"
+mkdir /usr/local/openresty/nginx/conf.d
+mkdir /tmp/hls
+mkdir /tmp/hls2
+
+echo ""
 echo "Dang tao file /etc/init.d/openresty"
 wget https://raw.githubusercontent.com/openresty/openresty-packaging/master/deb/openresty/debian/openresty.init -O /etc/init.d/openresty > /dev/null 2>&1 && chmod +x /etc/init.d/openresty
 
@@ -79,15 +85,11 @@ wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto
 
 echo ""
 echo "Dang tao config file /usr/local/openresty/nginx/conf.d/http-proxy.conf"
-wget "https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/http-proxy.conf" -O "/usr/local/openresty/nginx/conf.d/http-proxy.conf" > /dev/null 2>&1
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/http-proxy.conf -O /usr/local/openresty/nginx/conf.d/http-proxy.conf > /dev/null 2>&1
 
 echo ""
 echo "Dang tao file /root/start.sh"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O /root/start.sh > /dev/null 2>&1 && chmod +x /root/start.sh
-
-mkdir /usr/local/openresty/nginx/conf.d
-mkdir /tmp/hls
-mkdir /tmp/hls2
 
 ln -s /etc/init.d/openresty /etc/init.d/nginx
 update-rc.d openresty defaults
