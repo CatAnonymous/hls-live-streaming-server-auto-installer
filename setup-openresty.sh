@@ -79,7 +79,7 @@ wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto
 
 echo ""
 echo "Dang tao config file /usr/local/openresty/nginx/conf.d/http-proxy.conf"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/http-proxy.conf -O /usr/local/openresty/nginx/conf.d/http-proxy.conf > /dev/null 2>&1
+wget "https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/http-proxy.conf" -O "/usr/local/openresty/nginx/conf.d/http-proxy.conf" > /dev/null 2>&1
 
 echo ""
 echo "Dang tao file /root/start.sh"
