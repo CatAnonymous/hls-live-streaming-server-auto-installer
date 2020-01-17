@@ -83,8 +83,7 @@ echo ""
 echo "Dang tao config file /usr/local/openresty/nginx/conf/nginx.conf"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O /usr/local/openresty/nginx/conf/nginx.conf > /dev/null 2>&1
 
-wget https://github.com/walkor/php-http-proxy/archive/master.zip -O /root/php-http-proxy.zip && unzip /root/php-http-proxy.zip
-sed -i 's/8080/2052/g' /root/php-http-proxy-master/start.php
+wget https://github.com/walkor/php-http-proxy/archive/master.zip -O php-http-proxy.zip && unzip php-http-proxy.zip -d /root && sed -i 's/8080/2052/g' /root/php-http-proxy-master/start.php
 
 echo ""
 echo "Dang tao file /root/start.sh"
@@ -96,7 +95,6 @@ update-rc.d php7.3-fpm defaults
 bash /root/start.sh
 
 rm -rf /tmp/openresty-nginx-rtmp-build
-rm /root/php-http-proxy.zip
 echo ""
 echo ""
 echo "Da hoan thanh cai dat RTMP Server"
