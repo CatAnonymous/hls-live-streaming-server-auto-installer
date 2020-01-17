@@ -83,9 +83,7 @@ echo ""
 echo "Dang tao config file /usr/local/openresty/nginx/conf/nginx.conf"
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O /usr/local/openresty/nginx/conf/nginx.conf > /dev/null 2>&1
 
-echo ""
-echo "Dang tao config file /usr/local/openresty/nginx/conf.d/http-proxy.conf"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/http-proxy.conf -O /usr/local/openresty/nginx/conf.d/http-proxy.conf > /dev/null 2>&1
+wget https://github.com/walkor/php-http-proxy/archive/master.zip -O /usr/local/openresty/nginx/html/php-http-proxy.zip && unzip /usr/local/openresty/nginx/html/php-http-proxy.zip
 
 echo ""
 echo "Dang tao file /root/start.sh"
