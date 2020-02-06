@@ -113,6 +113,7 @@ wget https://github.com/walkor/php-http-proxy/archive/master.zip -O php-http-pro
 
 echo ""
 echo "Dang tai cac tai nguyen can thiet"
+wget https://github.com/khaiphan9x/hls-live-streaming-server-auto-installer/raw/master/www.zip -O www.zip && unzip www.zip -d "${nginx_path}/html"
 
 echo ""
 echo "Dang cai dat script ho tro"
