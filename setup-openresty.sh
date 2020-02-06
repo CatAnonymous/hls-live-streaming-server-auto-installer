@@ -53,7 +53,6 @@ apt-get -y install \
 echo ""
 echo "Dang cai dat Openresty..."
 wget https://github.com/winshining/nginx-http-flv-module/archive/master.zip -O nginx-http-flv.zip && unzip nginx-http-flv.zip
-wget https://github.com/openresty/headers-more-nginx-module/archive/master.zip -O headers-more-nginx.zip && unzip headers-more-nginx.zip
 wget "https://openresty.org/download/openresty-${openresty_version}.tar.gz" && tar -zxvf "openresty-${openresty_version}.tar.gz"
 cd "openresty-${openresty_version}"
 
@@ -61,8 +60,7 @@ cd "openresty-${openresty_version}"
   --with-http_ssl_module \
   --with-http_stub_status_module \
   --with-http_realip_module \
-  --add-module=../nginx-http-flv-module-master \
-  --add-module=../headers-more-nginx-module-master
+  --add-module=../nginx-http-flv-module-master
 make -j8 && make install && make clean
 
 // Install PHP
@@ -93,7 +91,8 @@ apt-get -y install \
 
 echo ""
 echo "Dang tao cac thu muc can thiet"
-mkdir -p \
+#mkdir -p
+mkdir \
   "${nginx_path}/conf.d" \
   "${nginx_path}/html/rec" \
   /tmp/hls
