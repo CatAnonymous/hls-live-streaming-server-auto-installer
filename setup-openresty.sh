@@ -134,4 +134,5 @@ bash start.sh
 echo ""
 echo ""
 echo "Da hoan thanh cai dat"
-echo "Push to rtmp://<host>:11935/input/<yourkey>_<yourhash>"
+echo "Push: rtmp://<host>:${rtmp_port}/input/<yourkey>_<yourhash>"
+echo "Play: http://<host>:${http_port}/hls/<yourkey>.m3u8"
