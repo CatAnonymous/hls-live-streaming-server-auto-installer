@@ -90,7 +90,7 @@ apt-get -y install \
   ffmpeg
 
 echo ""
-echo "Dang tao cac thu muc can thiet"
+echo "Dang tao cac thu muc can thiet..."
 #mkdir -p
 mkdir \
   "${nginx_path}/conf.d" \
@@ -109,19 +109,19 @@ sed -i "s/RTMP_PORT/${rtmp_port}/g" "${nginx_path}/conf/nginx.conf"
 sed -i "s/HTTP_PORT/${http_port}/g" "${nginx_path}/conf/nginx.conf"
 
 echo ""
-echo "Dang cai dat PHP HTTP Proxy"
+echo "Dang cai dat PHP HTTP Proxy..."
 wget https://github.com/walkor/php-http-proxy/archive/master.zip -O php-http-proxy.zip && unzip php-http-proxy.zip -d ~/ && sed -i 's/8080/8686/g' ~/php-http-proxy-master/start.php
 
 echo ""
-echo "Dang tai cac tai nguyen can thiet"
+echo "Dang tai cac tai nguyen can thiet..."
 wget https://github.com/khaiphan9x/hls-live-streaming-server-auto-installer/raw/master/www.zip -O www.zip && unzip www.zip -d "${nginx_path}/html"
 
 echo ""
-echo "Dang cai dat script ho tro"
+echo "Dang cai dat script ho tro..."
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O ~/start.sh > /dev/null 2>&1 && chmod +x ~/start.sh
 
 echo ""
-echo "Dang don dep rac sau cai dat"
+echo "Dang don dep rac sau cai dat..."
 rm -rf $build_path
 rm ~/setup-openresty.sh
 
