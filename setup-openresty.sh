@@ -29,11 +29,13 @@ echo "Dang cap nhat tai nguyen..."
 apt-get update > /dev/null 2>&1
 apt-get -y upgrade > /dev/null 2>&1
 echo ""
-echo "Bat dau cai dat OpenResty NGINX RTMP Server"
-echo ""
 
 read -e -p "Nhap port RTMP: " -i "1935" rtmp_port
 read -e -p "Nhap port HTTP: " -i "80" http_port
+
+echo ""
+echo "Bat dau cai dat OpenResty NGINX RTMP Server"
+echo ""
 
 apt-get -y install \
   build-essential \
