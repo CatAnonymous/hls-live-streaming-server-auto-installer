@@ -14,6 +14,7 @@ php_version="7.3"
 nginx_path="/usr/local/openresty/nginx"
 build_path="/tmp/openresty-nginx-rtmp-build"
 
+rm ./setup-openresty.sh
 if [[ $EUID -ne 0 ]]; then
   echo "This script must be run as root or with sudo."
   exit 1
@@ -122,8 +123,8 @@ wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto
 
 echo ""
 echo "Dang don dep rac sau cai dat..."
+echo ""
 rm -rf $build_path
-rm ~/setup-openresty.sh
 
 ln -s /etc/init.d/openresty /etc/init.d/nginx
 update-rc.d openresty defaults
@@ -134,5 +135,6 @@ bash start.sh
 echo ""
 echo ""
 echo "Da hoan thanh cai dat"
-echo "Push: rtmp://<host>:${rtmp_port}/input/<yourkey>_<yourhash>"
-echo "Play: http://<host>:${http_port}/hls/<yourkey>.m3u8"
+echo "Push: rtmp://<host>:${rtmp_port}/input/<your_key>?hash=<your_hash>"
+echo "Play: http://<host>:${http_port}/hls/<your_key>.m3u8"
+echo "Chao tam biet!"
