@@ -12,7 +12,7 @@
 openresty_version="1.15.8.2"
 php_version="7.3"
 nginx_path="/usr/local/openresty/nginx"
-build_path="kkk"
+build_path="/tmp/openresty-nginx-rtmp-build"
 
 if [[ $EUID -ne 0 ]]; then
   echo "This script must be run as root or with sudo."
@@ -20,8 +20,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 clear
-mkdir /tmp/openresty-nginx-rtmp-build
-cd /tmp/openresty-nginx-rtmp-build
+mkdir $build_path
+cd $build_path
 echo "Ban dang su dung script tu dong cai dat OpenResty Nginx RTMP cho Debian va Ubuntu duoc viet boi Khai Phan"
 echo "================================================"
 echo "" 
@@ -123,7 +123,7 @@ wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto
 
 echo ""
 echo "Dang don dep rac sau cai dat"
-rm -rf /tmp/openresty-nginx-rtmp-build
+rm -rf $build_path
 rm ~/setup-openresty.sh
 
 ln -s /etc/init.d/openresty /etc/init.d/nginx
