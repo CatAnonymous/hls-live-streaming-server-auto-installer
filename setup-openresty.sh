@@ -9,7 +9,7 @@
 #
 #
 
-openesty_version="1.15.8.2"
+openresty_version="1.15.8.2"
 php_version="7.3"
 nginx_path="/usr/local/openresty/nginx"
 build_path="kkk"
