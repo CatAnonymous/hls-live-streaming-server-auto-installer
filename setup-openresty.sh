@@ -38,6 +38,8 @@ echo ""
 echo "Bat dau cai dat OpenResty NGINX RTMP Server"
 echo ""
 
+echo ""
+echo "Dang cai dat cac thu vien can thiet..."
 apt-get -y install \
   build-essential \
   libpcre3 \
