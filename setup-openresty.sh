@@ -40,6 +40,7 @@ echo ""
 
 echo ""
 echo "Dang cai dat cac thu vien can thiet..."
+echo ""
 apt-get -y install \
   build-essential \
   libpcre3 \
@@ -55,6 +56,7 @@ apt-get -y install \
 // Install OpenResty
 echo ""
 echo "Dang cai dat Openresty..."
+echo ""
 wget https://github.com/winshining/nginx-http-flv-module/archive/master.zip -O nginx-http-flv.zip && unzip nginx-http-flv.zip
 wget "https://openresty.org/download/openresty-${openresty_version}.tar.gz" && tar -zxvf "openresty-${openresty_version}.tar.gz"
 cd "openresty-${openresty_version}"
@@ -69,6 +71,7 @@ make -j8 && make install && make clean
 // Install PHP
 echo ""
 echo "Dang cai dat PHP..."
+echo ""
 apt-get -y install \
   software-properties-common
 apt-get update
@@ -80,6 +83,7 @@ sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' "/etc/php/${php_version}/fpm
 // Install FFMPEG
 echo ""
 echo "Dang cai dat FFMPEG..."
+echo ""
 apt-get -y install \
   yasm \
   libx264-dev \
@@ -107,18 +111,21 @@ wget https://raw.githubusercontent.com/openresty/openresty-packaging/master/deb/
 
 echo ""
 echo "Dang tao file config file ${nginx_path}/conf/nginx.conf"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O "${nginx_path}/conf/nginx.conf" > /dev/null 2>&1 && sed -i "s/RTMP_PORT/${rtmp_port}/g" "${nginx_path}/conf/nginx.conf" && sed -i "s/HTTP_PORT/${http_port}/g" "${nginx_path}/conf/nginx.conf" && sed -i "s/NGINX_PATH/${nginx_path}/g" "${nginx_path}/conf/nginx.conf"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O "${nginx_path}/conf/nginx.conf" > /dev/null 2>&1 && sed -i "s/RTMP_PORT/${rtmp_port}/g" "${nginx_path}/conf/nginx.conf" && sed -i "s/HTTP_PORT/${http_port}/g" "${nginx_path}/conf/nginx.conf" && sed -i "s,NGINX_PATH,${nginx_path},g" "${nginx_path}/conf/nginx.conf"
 
 echo ""
 echo "Dang cai dat PHP HTTP Proxy..."
+echo ""
 wget https://github.com/walkor/php-http-proxy/archive/master.zip -O php-http-proxy.zip && unzip php-http-proxy.zip -d ~/ && sed -i 's/8080/8686/g' ~/php-http-proxy-master/start.php
 
 echo ""
 echo "Dang tai cac tai nguyen can thiet..."
+echo ""
 wget https://github.com/khaiphan9x/hls-live-streaming-server-auto-installer/raw/master/www.zip -O www.zip && unzip www.zip -d "${nginx_path}/html"
 
 echo ""
 echo "Dang cai dat script ho tro..."
+echo ""
 wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/start.sh -O ~/start.sh > /dev/null 2>&1 && chmod +x ~/start.sh
 
 echo ""
