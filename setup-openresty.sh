@@ -105,9 +105,7 @@ wget https://raw.githubusercontent.com/openresty/openresty-packaging/master/deb/
 
 echo ""
 echo "Dang tao file config file ${nginx_path}/conf/nginx.conf"
-wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O "${nginx_path}/conf/nginx.conf" > /dev/null 2>&1
-sed -i "s/RTMP_PORT/${rtmp_port}/g" "${nginx_path}/conf/nginx.conf"
-sed -i "s/HTTP_PORT/${http_port}/g" "${nginx_path}/conf/nginx.conf"
+wget https://raw.githubusercontent.com/khaiphan9x/hls-live-streaming-server-auto-installer/master/nginx-openresty.conf -O "${nginx_path}/conf/nginx.conf" > /dev/null 2>&1 && sed -i "s/RTMP_PORT/${rtmp_port}/g" "${nginx_path}/conf/nginx.conf" && sed -i "s/HTTP_PORT/${http_port}/g" "${nginx_path}/conf/nginx.conf"
 
 echo ""
 echo "Dang cai dat PHP HTTP Proxy..."
