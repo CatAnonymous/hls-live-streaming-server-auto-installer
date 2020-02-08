@@ -126,7 +126,7 @@ rm -rf $build_path
 
 ln -s /etc/init.d/openresty /etc/init.d/nginx
 update-rc.d openresty defaults
-update-rc.d php7.3-fpm defaults
+update-rc.d "php${php_version}-fpm" defaults
 cd ~
 bash start.sh
 
